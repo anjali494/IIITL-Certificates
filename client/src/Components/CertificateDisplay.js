@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
 function CertificateDisplay() {
   const certTemplate = {
     candidateName: "",
+    rollNo: "", //soumyabaheti
     courseName: "",
     creationDate: null,
     instituteName: "",
