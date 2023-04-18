@@ -170,6 +170,7 @@ class GenerateCert extends React.Component {
     instituteWebsite: "",
     instituteCourses: [],
     candidateName: "",
+    rollNo:"",
     selectedCourse: null,
     isLegitInstitute: null,
     currentState: "normal", // normal/load/validate
@@ -319,6 +320,11 @@ class GenerateCert extends React.Component {
   handleTextFieldChangeCandidateName(e) {
     this.setState({
       candidateName: e.target.value,
+    });
+  }
+  handleTextFieldChangeRollNo(e) {
+    this.setState({
+      rollNo: e.target.value,
     });
   }
 
