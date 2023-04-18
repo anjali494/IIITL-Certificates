@@ -439,6 +439,7 @@ class GenerateCert extends React.Component {
         .generateCertificate(
           certId,
           encrypt(candidateName, certId),
+          encrypt(rollNo, rollNo),
           courseIndex,
           encrypt(creationDate, certId)
         )
