@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 package-lock.json
-/contracts
+/src/contracts
 # testing
 /coverage 
 
