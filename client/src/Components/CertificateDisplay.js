@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
 function CertificateDisplay() {
   const certTemplate = {
     candidateName: "",
+    rollNo: "", //soumyabaheti
     courseName: "",
     creationDate: null,
     instituteName: "",
@@ -174,24 +175,27 @@ function CertificateDisplay() {
       .then((data) => {
         console.log("Here's the retrieved certificate data of id", id);
         console.log(data);
+        //soumyabaheti
         try {
           console.log("candidateName", data[0], decrypt(data[0], id));
-          console.log("courseName", data[1]);
-          console.log("creationDate", data[2], decrypt(data[2], id));
-          console.log("instituteName", data[3]);
-          console.log("instituteAcronym", data[4]);
-          console.log("instituteLink", data[5]);
-          console.log("revoked", data[6]);
-
+          console.log("rollNo", data[1], decrypt(data[1], id));
+          console.log("courseName", data[2]);
+          console.log("creationDate", data[3], decrypt(data[3], id));
+          console.log("instituteName", data[4]);
+          console.log("instituteAcronym", data[5]);
+          console.log("instituteLink", data[6]);
+          console.log("revoked", data[7]);
+//soumyabaheti
           setCertData((prev) => ({
             ...prev,
             candidateName: decrypt(data[0], id),
-            courseName: data[1],
-            creationDate: decrypt(data[2], id),
-            instituteName: data[3],
-            instituteAcronym: data[4],
-            instituteLink: data[5],
-            revoked: data[6],
+            rollNo: decrypt(data[1], id),
+            courseName: data[2],
+            creationDate: decrypt(data[3], id),
+            instituteName: data[4],
+            instituteAcronym: data[5],
+            instituteLink: data[6],
+            revoked: data[7],
           }));
 
           setCertExists(true);
@@ -227,6 +231,7 @@ function CertificateDisplay() {
               <Certificate
                 id={id}
                 candidateName={certData.candidateName}
+                rollNo={certData.rollNo} //soumyabaheti
                 courseName={certData.courseName}
                 creationDate={certData.creationDate}
                 instituteName={certData.instituteName}
@@ -394,6 +399,7 @@ const DetailGroup = (props) => {
 function Certificate({
   id,
   candidateName,
+  rollNo,
   courseName,
   creationDate,
   instituteName,
@@ -424,6 +430,10 @@ function Certificate({
             >
               <Grid item>
                 <DetailGroup label="Student Name" content={candidateName} />
+              </Grid>
+              {/* soumyabaheti */}
+              <Grid item>
+                <DetailGroup label="Roll No" content={rollNo} />
               </Grid>
               <Grid item>
                 <VerificationStatus revoked={revoked} />
