@@ -101,13 +101,13 @@ class NavBarLanding extends React.Component {
         >
           Home
         </MenuItem>
-        {/* <MenuItem
+        <MenuItem
           style={{ justifyContent: "flex-end" }}
           component={Link}
           to="/admin"
         >
           Central Authority Portal
-        </MenuItem> */}
+        </MenuItem>
         <MenuItem
           style={{ justifyContent: "flex-end" }}
           component={Link}

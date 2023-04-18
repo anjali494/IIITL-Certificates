@@ -509,6 +509,7 @@ class GenerateCert extends React.Component {
       isLegitInstitute,
       firstname,
       lastname,
+      rollNo,
       certificateId,
       currentState,
       txnFailed,
@@ -650,6 +651,18 @@ class GenerateCert extends React.Component {
                             className={classes.textField}
                             value={lastname}
                             onChange={this.handleChange("lastname")}
+                            margin="normal"
+                            variant="outlined"
+                          />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
+                          <TextField
+                            required
+                            id="rollNo"
+                            label="Roll Number"
+                            className={classes.textField}
+                            value={rollNo}
+                            onChange={this.handleChange("rollNo")}
                             margin="normal"
                             variant="outlined"
                           />
