@@ -407,7 +407,7 @@ class GenerateCert extends React.Component {
       currentState: "load",
     });
     // this.setState({ currentState: "load" });
-    const { firstname, lastname, courseIndex } = this.state;
+    const { firstname, lastname, rollNo, courseIndex } = this.state;
     let candidateName = `${firstname} ${lastname}`;
     // let assignDate = new Date(assignedOn).getTime();
     console.log("Submit button clicked, below are current details:");
@@ -415,8 +415,9 @@ class GenerateCert extends React.Component {
     const creationDate = new Date().getTime();
     console.log("[0] certId:", certId);
     console.log("[1] candidateName:", candidateName);
-    console.log("[2] courseIndex:", courseIndex);
-    console.log("[3] creationDate:", creationDate);
+    console.log("[2] rollNo:", rollNo);
+    console.log("[3] courseIndex:", courseIndex);
+    console.log("[4] creationDate:", creationDate);
     // instantiate the contract (---can't maintain it in a state for some reason, need to check again later----)
     const web3 = window.web3;
     const accounts = await web3.eth.getAccounts();
@@ -713,6 +714,7 @@ class GenerateCert extends React.Component {
                                     currentState: "normal",
                                     firstname: "",
                                     lastname: "",
+                                    rollNo: "",
                                     courseIndex: 0,
                                   });
                                 }}
