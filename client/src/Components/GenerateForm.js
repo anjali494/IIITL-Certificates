@@ -95,11 +95,12 @@ const styles = theme => ({
     marginLeft: "50px"
   }
 });
-
+//soumyabaheti
 class GenerateForm extends React.Component {
   state = {
     firstname: "",
     lastname: "",
+    rollNo: "",
     organization: "FossAsia",
     orgLogo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/FOSSASIA_Logo.svg/600px-FOSSASIA_Logo.svg.png",
     coursename: "",
@@ -114,7 +115,7 @@ class GenerateForm extends React.Component {
       [name]: event.target.value
     });
   };
-
+//soumyabaheti
   submitData = event => {
     event.preventDefault();
     if (this.state.currentState === "validate") {
@@ -124,6 +125,7 @@ class GenerateForm extends React.Component {
     const {
       firstname,
       lastname,
+      rollNo,
       organization,
       coursename,
       assignedOn,
@@ -134,6 +136,7 @@ class GenerateForm extends React.Component {
     let assignDate = new Date(assignedOn).getTime();
     generateCertificate(
       candidateName,
+      rollNo,
       coursename,
       organization,
       assignDate,
@@ -150,12 +153,13 @@ class GenerateForm extends React.Component {
       })
       .catch(err => console.log(err));
   };
-
+//soumyabaheti
   render() {
     const { classes } = this.props;
     const {
       firstname,
       lastname,
+      rollNo,
       organization,
       coursename,
       duration,
@@ -235,6 +239,20 @@ class GenerateForm extends React.Component {
                   margin="normal"
                   variant="outlined"
                 />
+              </Grid>
+              {/* soumyabaheti */}
+              <Grid item xs={12} sm={12}>
+                <TextField
+                  required
+                  id="rollNo"
+                  label="Roll No"
+                  className={classes.textField}
+                  value={rollNo}
+                  onChange={this.handleChange("rollNo")}
+                  margin="normal"
+                  variant="outlined"
+                />
+                
               </Grid>
               <Grid item xs={12} sm={12} >
                 <FormControl required variant="outlined" className={classes.formControl}>
