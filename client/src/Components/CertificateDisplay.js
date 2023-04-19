@@ -55,14 +55,14 @@ const useStyles = makeStyles((theme) => ({
      
   },
   certHeader1: {
-    fontSize : 25,
+    fontSize : 35,
   },
   certHeader2: {
-    fontSize : 15,
+    fontSize : 22,
   },
   certTopSection: {
     backgroundColor: "white",
-    padding: "24px",
+    padding: "20px 24px 8px 24px ",
   },
   // certver: {
 
@@ -70,19 +70,23 @@ const useStyles = makeStyles((theme) => ({
   certMidSection: {
     backgroundColor: "white",
     padding: "24px",
-    borderTop: "1px solid #6066af",
-    borderBottom: "1px solid #6066af",
+    // borderTop: "1px solid #6066af",
+    // borderBottom: "1px solid #6066af",
     textTransform : "uppercase",
+    fontSize : "23px",
+    lineHeight : 1.8,
+    letterSpacing : 0.5,
 
   },
   certMid1: {
-    fontSize : 20
+    // fontSize : "29px"
+    color : "#363e98"
   },
   certBottomSection: {
     backgroundColor: "white",
     padding: "24px",
     borderRadius: "0 0 10px 10px",
-    fontSize : 12
+    fontSize : 18
   },
   paper: {
     marginTop: "30px",
@@ -465,10 +469,14 @@ function Certificate({
               justifyContent="space-between"
               alignItems="flex-start"
             >
-              <Grid item xs = {6}>
-                <img style={{ width: "25%", height: "25%" }} src = {logo} alt = "Logo"/>
+            <Grid item xs = {3} align = "right">
+              </Grid>
+              <Grid item xs = {4} align = "center">
+                <img style={{ width: "35%", height: "35%" }} src = {logo} alt = "Logo"/>
               </Grid>
               <Grid item>
+              </Grid>
+              <Grid item xs = {2}>
                 <VerificationStatus revoked={revoked} />
               </Grid>
             </Grid>
