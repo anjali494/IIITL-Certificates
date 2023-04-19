@@ -448,7 +448,7 @@ function Certificate({
               IIITL {dateString}
               </Grid>
               <Grid item xs = {6} align = "right">
-              Enrollment No. LCS2020028
+              Enrollment No. {rollNo}
               </Grid>
             </Grid>
             </Grid>
@@ -467,10 +467,6 @@ function Certificate({
             >
               <Grid item xs = {6}>
                 <img style={{ width: "25%", height: "25%" }} src = {logo} alt = "Logo"/>
-              </Grid>
-              {/* soumyabaheti */}
-              <Grid item>
-                <DetailGroup label="Roll No" content={rollNo} />
               </Grid>
               <Grid item>
                 <VerificationStatus revoked={revoked} />
