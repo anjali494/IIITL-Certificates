@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import logo from '../Images/Logo.png';
 
 //Decrypt Function (Utility Function)
 import { decrypt } from "./decrypt";
@@ -18,6 +19,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  GridList,
 } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -39,29 +41,48 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "91.5vh",
     lineHeight: "1.5",
   },
+  topGrid: {
+    padding: "0px 0px 24px 0px",
+     
+  },
   certHeader: {
     backgroundColor: "white",
     background: "linear-gradient(109.96deg,#363e98,#8ac6ff),#fff",
-    padding: "24px",
+    padding: "12px 24px 24px 24px",
     borderRadius: "10px 10px 0 0 ",
-    fontSize: "24px",
     fontWeight: "400",
     color: "white",
+     
+  },
+  certHeader1: {
+    fontSize : 25,
+  },
+  certHeader2: {
+    fontSize : 15,
   },
   certTopSection: {
     backgroundColor: "white",
     padding: "24px",
   },
+  // certver: {
+
+  // },
   certMidSection: {
     backgroundColor: "white",
     padding: "24px",
     borderTop: "1px solid #6066af",
     borderBottom: "1px solid #6066af",
+    textTransform : "uppercase",
+
+  },
+  certMid1: {
+    fontSize : 20
   },
   certBottomSection: {
     backgroundColor: "white",
     padding: "24px",
     borderRadius: "0 0 10px 10px",
+    fontSize : 12
   },
   paper: {
     marginTop: "30px",
@@ -359,14 +380,8 @@ const VerificationStatus = (props) => {
         {sm && (
           <Box marginLeft="10px">
             <Box className={classes.verificationStatus}>
-              {props.revoked ? "Revoked" : "Verified"}
+              {props.revoked ? "Revoked" :"Verified"}
             </Box>
-            <a
-              href="javascript:void(0)"
-              style={{ color: "white", fontSize: "12px" }}
-            >
-              What does this mean?
-            </a>
           </Box>
         )}
       </Box>
@@ -407,12 +422,34 @@ function Certificate({
   const month = dateObject.toLocaleString("en-US", { month: "long" });
   const year = dateObject.toLocaleString("en-US", { year: "numeric" });
   const dateString = `${day} ${month} ${year}`;
+  const currentyear = `${year}`;
   return (
     <>
       <Paper className={classes.paper}>
         <Grid container>
-          <Grid item xs={12} className={classes.certHeader}>
-            University Credential
+        
+            
+          
+          <Grid item xs = {12} className={classes.certHeader} align = "center">
+          <Grid item xs={12} className={classes.topGrid}>
+          <Grid
+              container
+              direction="row"
+              justifyContent="space-between"
+              alignItems="flex-start"
+            >
+              <Grid item xs = {6} align = "left">
+              IIITL {dateString}
+              </Grid>
+              <Grid item xs = {6} align = "right">
+              Enrollment No. LCS2020028
+              </Grid>
+            </Grid>
+            </Grid>
+            <Grid item xs = {12} className={classes.certHeader1}>
+              Indian Institute of Information Technology, Lucknow
+            </Grid>
+            <Grid item xs = {12} className={classes.certHeader2}>An Institute of National Importance by the Act of Parliament of India</Grid>
           </Grid>
 
           <Grid item xs={12} className={classes.certTopSection}>
@@ -422,18 +459,38 @@ function Certificate({
               justifyContent="space-between"
               alignItems="flex-start"
             >
-              <Grid item>
-                <DetailGroup label="Student Name" content={candidateName} />
+              <Grid item xs = {6}>
+                <img style={{ width: "25%", height: "25%" }} src = {logo} alt = "Logo"/>
               </Grid>
-              <Grid item>
+              <Grid item xs = {2}>
                 <VerificationStatus revoked={revoked} />
               </Grid>
             </Grid>
           </Grid>
-
-          <Grid item xs={12} className={classes.certMidSection}>
+          <Grid item className={classes.certMidSection} align = "center">
             <Grid container>
-              <Grid item xs={12} lg={6}>
+              <Grid item xs = {12} lg = {12}>THE GOVERNING BODY</Grid>
+              <Grid item xs = {12}>UPON THE RECOMMENDATION OF THE SENATE</Grid>
+              <Grid item xs = {12}>HEREBY CONFERS UPON</Grid>
+              <Grid item xs = {12} className={classes.certMid1}><b>{candidateName}</b></Grid>
+              <Grid item xs = {12}>THE DEGREE OF </Grid>
+              <Grid item xs = {12} className={classes.certMid1}><b>BACHELOR OF TECHNOLOGY</b></Grid>
+              <Grid item xs = {12}>IN </Grid>
+              <Grid item xs = {12} className={classes.certMid1}><b>{courseName}</b></Grid>
+              <Grid item xs = {12}>ON HAVING SUCCESSFULLY COMPLETED</Grid>
+              <Grid item xs = {12}>THE PRESCRIBED REQUIREMENTS</Grid>
+              <Grid item xs = {12}>IN THE YEAR {currentyear}.</Grid>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              {/* <Grid item xs={12} lg={6}>
                 <DetailGroup label="Course Name" content={courseName} />
               </Grid>
               <Grid item xs={12} lg={6}>
@@ -447,12 +504,24 @@ function Certificate({
               </Grid>
               <Grid item xs={12} lg={6}>
                 <DetailGroup label="Institute Link" content={instituteLink} />
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
 
           <Grid item sm={12} className={classes.certBottomSection}>
-            <DetailGroup label="Issuance Date" content={dateString} />
+            <Grid
+              container
+              direction="row"
+              justifyContent="space-between"
+              alignItems="flex-start"
+            >
+              <Grid item xs = {6}>
+              Chairman, Governing Body
+              </Grid>
+              <Grid item xs = {6} align = "right">
+              Chairman, Senate
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Paper>
