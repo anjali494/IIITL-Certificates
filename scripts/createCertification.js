@@ -6,6 +6,7 @@ const { encrypt } = require('../client/src/Components/encrypt')
 
 const mockCert = {
     candidateName: encrypt("Soumya Baheti", "5c0157fd3ff47a2a54075b01"),
+    rollNo: encrypt("LIT2020040", "5c0157fd3ff47a2a54075b01"),
     orgName: "Indian Institute of Information Technology",
     courseIndex: 0,
     creationDate: encrypt(new Date().getTime(), "5c0157fd3ff47a2a54075b01"),
@@ -40,6 +41,7 @@ module.exports = async function(callback){
         const receipt = await certification.generateCertificate(
             mockCert.id,
             mockCert.candidateName,
+            mockCert.rollNo,
             mockCert.courseIndex,
             mockCert.creationDate, { from: mockInstituteAcc }
         );

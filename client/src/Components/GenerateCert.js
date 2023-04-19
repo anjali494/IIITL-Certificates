@@ -170,6 +170,7 @@ class GenerateCert extends React.Component {
     instituteWebsite: "",
     instituteCourses: [],
     candidateName: "",
+    rollNo:"",
     selectedCourse: null,
     isLegitInstitute: null,
     currentState: "normal", // normal/load/validate
@@ -321,6 +322,11 @@ class GenerateCert extends React.Component {
       candidateName: e.target.value,
     });
   }
+  handleTextFieldChangeRollNo(e) {
+    this.setState({
+      rollNo: e.target.value,
+    });
+  }
 
   handleChange = (name) => (event) => {
     this.setState({
@@ -407,7 +413,7 @@ class GenerateCert extends React.Component {
       currentState: "load",
     });
     // this.setState({ currentState: "load" });
-    const { firstname, lastname, courseIndex } = this.state;
+    const { firstname, lastname, rollNo, courseIndex } = this.state;
     let candidateName = `${firstname} ${lastname}`;
     // let assignDate = new Date(assignedOn).getTime();
     console.log("Submit button clicked, below are current details:");
@@ -415,8 +421,9 @@ class GenerateCert extends React.Component {
     const creationDate = new Date().getTime();
     console.log("[0] certId:", certId);
     console.log("[1] candidateName:", candidateName);
-    console.log("[2] courseIndex:", courseIndex);
-    console.log("[3] creationDate:", creationDate);
+    console.log("[2] rollNo:", rollNo);
+    console.log("[3] courseIndex:", courseIndex);
+    console.log("[4] creationDate:", creationDate);
     // instantiate the contract (---can't maintain it in a state for some reason, need to check again later----)
     const web3 = window.web3;
     const accounts = await web3.eth.getAccounts();
@@ -432,6 +439,7 @@ class GenerateCert extends React.Component {
         .generateCertificate(
           certId,
           encrypt(candidateName, certId),
+          encrypt(rollNo, certId),
           courseIndex,
           encrypt(creationDate, certId)
         )
@@ -509,6 +517,7 @@ class GenerateCert extends React.Component {
       isLegitInstitute,
       firstname,
       lastname,
+      rollNo,
       certificateId,
       currentState,
       txnFailed,
@@ -655,6 +664,18 @@ class GenerateCert extends React.Component {
                           />
                         </Grid>
                         <Grid item xs={12} sm={12}>
+                          <TextField
+                            required
+                            id="rollNo"
+                            label="Roll Number"
+                            className={classes.textField}
+                            value={rollNo}
+                            onChange={this.handleChange("rollNo")}
+                            margin="normal"
+                            variant="outlined"
+                          />
+                        </Grid>
+                        <Grid item xs={12} sm={12}>
                           <FormControl
                             required
                             variant="outlined"
@@ -700,6 +721,7 @@ class GenerateCert extends React.Component {
                                     currentState: "normal",
                                     firstname: "",
                                     lastname: "",
+                                    rollNo: "",
                                     courseIndex: 0,
                                   });
                                 }}

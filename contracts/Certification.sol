@@ -23,6 +23,7 @@ contract Certification {
     struct Certificate {
         // Individual Info
         string candidate_name;
+        string roll_no; // soumyabaheti
         string course_name;
         string creation_date;
 
@@ -48,6 +49,7 @@ contract Certification {
     function generateCertificate(
         string memory _id,
         string memory _candidate_name,
+        string memory _roll_no, //soumyabaheti
         uint256 _course_index, 
         string memory _creation_date) public {
         require(institution.checkInstitutePermission(msg.sender) == true, "Institute account does not exist");
@@ -64,11 +66,11 @@ contract Certification {
         require(_course_index >= 0 && _course_index < _institute_courses.length, "Invalid Course index");
         string memory _course_name = _institute_courses[_course_index].course_name;
         bool revocation_status = false;
-        certificates[byte_id] = Certificate(_candidate_name, _course_name, _creation_date, _institute_name, _institute_acronym, _institute_link, revocation_status);
+        certificates[byte_id] = Certificate(_candidate_name, _course_name, _roll_no , _creation_date, _institute_name, _institute_acronym, _institute_link, revocation_status);//soumyabaheti
         emit certificateGenerated(byte_id);
     }
 
-    function getData(string memory _id) public view returns(string memory, string memory, string memory, string memory, string memory, string memory, bool) {
+    function getData(string memory _id) public view returns(string memory, string memory, string memory,string memory, string memory, string memory, string memory, bool) { //soumyabaheti
         bytes32 byte_id = stringToBytes32(_id);
         Certificate memory temp = certificates[byte_id];
         // require(certificates[byte_id].creation_date != 0, "Certificate id does not exist!");
@@ -79,7 +81,7 @@ contract Certification {
             tempEmptyStringNameTest.length != 0,
             "Certificate id does not exist"
         );
-        return (temp.candidate_name, temp.course_name, temp.creation_date, temp.institute_name, temp.institute_acronym, temp.institute_link, temp.revoked);
+        return (temp.candidate_name, temp.course_name, temp.roll_no, temp.creation_date, temp.institute_name, temp.institute_acronym, temp.institute_link, temp.revoked); //soumyabaheti
     }
 
     function revokeCertificate(string memory _id) public {
