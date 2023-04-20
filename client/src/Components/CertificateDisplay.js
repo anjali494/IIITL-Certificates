@@ -55,10 +55,10 @@ const useStyles = makeStyles((theme) => ({
      
   },
   certHeader1: {
-    fontSize : "35px",
+    fontSize : "220%",
   },
   certHeader2: {
-    fontSize : "22px",
+    fontSize : "120%",
   },
   certTopSection: {
     backgroundColor: "white",
