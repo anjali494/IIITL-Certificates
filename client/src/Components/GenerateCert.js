@@ -31,6 +31,7 @@ import LoopOutlinedIcon from "@material-ui/icons/LoopOutlined";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { text } from "body-parser";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -336,6 +337,21 @@ class GenerateCert extends React.Component {
     });
   };
 
+  // handleChange1 = (name) => (event) => {
+  //   const text = event.target.value;
+  //   if(text.length == 10){
+  //     // this.setState({
+  //     //   [name]: event.target.value,
+  //     //   currentState: "normal",
+  //     //   revokeCurrentState: "normal",
+  //     // });
+  //     console.log("roll number")
+  //   }
+  //   else {
+  //     console.log("error")
+  //   }
+  // };
+
 
   revokeCertificateFunction = async (event) => {
     event.preventDefault();
@@ -407,7 +423,12 @@ class GenerateCert extends React.Component {
 
   submitData = async (event) => {
     event.preventDefault();
+    if(this.state.rollNo.length != 10 || this.state.rollNo[0] != 'L'){
+      toast.error("Roll Number : LXXXXXXXXX");
+      return;
+    }
     if (this.state.currentState === "validate") {
+      
       return;
     }
     this.setState({
@@ -674,8 +695,6 @@ class GenerateCert extends React.Component {
                             onChange={this.handleChange("rollNo")}
                             margin="normal"
                             variant="outlined"
-                            error={rollNo.length != 10}
-                            helperText={rollNo.length != 10 ? 'Roll Number must be of the format LXXXXXXXXX ' : ' '}
                           />
                         </Grid>
                         <Grid item xs={12} sm={12}>
