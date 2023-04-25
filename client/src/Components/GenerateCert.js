@@ -336,6 +336,7 @@ class GenerateCert extends React.Component {
     });
   };
 
+
   revokeCertificateFunction = async (event) => {
     event.preventDefault();
     if (this.state.revokeCurrentState === "validate") {
@@ -673,6 +674,8 @@ class GenerateCert extends React.Component {
                             onChange={this.handleChange("rollNo")}
                             margin="normal"
                             variant="outlined"
+                            error={rollNo.length != 10}
+                            helperText={rollNo.length != 10 ? 'Roll Number must be of the format LXXXXXXXXX ' : ' '}
                           />
                         </Grid>
                         <Grid item xs={12} sm={12}>
