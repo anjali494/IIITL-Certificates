@@ -46,7 +46,7 @@
 
 
   
-7.Interface to enter Certificate ID to view Certificate  
+7. Interface to enter Certificate ID to view Certificate  
 
 ![img](Screenshots/Screenshot%202023-04-24%20234748.png)
 
