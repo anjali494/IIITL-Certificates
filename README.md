@@ -10,11 +10,47 @@
 ---
 
 ## ScreenShots
-1. Landing Page
-![img1](Screenshots/Screenshot 2023-04-24 232638.png)
-2. Interface to Issue a Certificate
-![img2](Screenshots/Screenshot 2023-04-24 234133.png)
+1. Landing Page  
 
+![img](Screenshots/Screenshot%202023-04-24%20232638.png)
+
+
+  
+2. Interface to Issue a Certificate  
+
+![img](Screenshots/Screenshot%202023-04-24%20234133.png)
+
+  
+
+3. Unauthorized Access to page for Issuing Certificates  
+
+![img](Screenshots/Screenshot%202023-04-24%20232743.png)
+
+
+  
+4. Example of Verified Certificate  
+
+![img](Screenshots/Screenshot%202023-04-24%20234422.png)
+
+  
+
+5. Interface to Revoke a Certificate  
+
+![img](Screenshots/Screenshot%202023-04-24%20234508.png)
+
+
+  
+6. Example of a Revoked Certificate  
+
+![img](Screenshots/Screenshot%202023-04-24%20234646.png)
+
+
+  
+7.Interface to enter Certificate ID to view Certificate  
+
+![img](Screenshots/Screenshot%202023-04-24%20234748.png)
+
+  
 ---
 
 ## Team Members
